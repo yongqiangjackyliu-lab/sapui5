@@ -1,24 +1,29 @@
 {
-  "_version": "1.12.0",
-  "sap.app": {
-    "id": "sample.basic.html5.mta",
-    "type": "application",
-    "title": "Basic HTML5 App",
-    "applicationVersion": {
-      "version": "0.0.1"
-    }
-  },
-  "sap.cloud": {
-    "public": true,
-    "service": "multi-cloud-html5-apps-samples"
-  },
-  "sap.ui5": {
-    "dependencies": {
-        "minUI5Version": "1.65.0"
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "sample.basic.html5.mta",
+        "type": "application",
+        "title": "Basic HTML5 App",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "sourceTemplate": {
+            "id": "@sap/ux-app-migrator:freestyle",
+            "version": "1.22.0",
+            "toolsId": "dc8c0c39-0026-4957-a915-7e65ad814668"
+        }
     },
-    "contentDensities": {
-        "compact": true,
-        "cozy": true
+    "sap.cloud": {
+        "public": true,
+        "service": "multi-cloud-html5-apps-samples"
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.65.0"
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
     }
-  }
 }

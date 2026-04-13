@@ -1,9 +1,30 @@
 {
-  "name": "HTML5Module",
+  "name": "sample.basic.html5.mta",
   "version": "0.0.1",
   "scripts": {
-    "build": "npm run clean && npm run zip",
     "zip": "npx bestzip HTML5Module-content.zip *",
-    "clean": "npx rimraf HTML5Module-content.zip dist"
+    "clean": "npx rimraf HTML5Module-content.zip dist",
+    "build_old": "npm run clean && npm run zip",
+    "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#app-tile\"",
+    "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#app-tile\"",
+    "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
+    "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config"
+  },
+  "private": true,
+  "sapuxLayer": "CUSTOMER_BASE",
+  "description": "",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html",
+  "devDependencies": {
+    "@ui5/cli": "^4.0.0",
+    "@sap/ux-ui5-tooling": "1",
+    "rimraf": "6.0.1"
   }
 }

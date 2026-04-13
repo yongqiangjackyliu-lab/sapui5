@@ -1,5 +1,5 @@
 _schema-version: "3.2"
-ID: "sample-basic-html5-mta"
+ID: sample-basic-html5-mta
 version: 1.0.0
 
 build-parameters:
@@ -20,6 +20,7 @@ modules:
     parameters:
       content:
         instance:
+          existing_destinations_policy: update
           destinations:
             - Name: sample-basic-html5-repo-host
               ServiceInstanceName: sample-basic-html5-repo-host
@@ -30,9 +31,9 @@ modules:
               ServiceKeyName: sample-basic-html5-uaa-key
               sap.cloud.service: multi-cloud-html5-apps-samples
               Authentication: OAuth2UserTokenExchange
-          existing_destinations_policy: update
     build-parameters:
       no-source: true
+
   - name: sample-basic-html5-ui-deployer
     type: com.sap.application.content
     path: .
@@ -43,18 +44,22 @@ modules:
     build-parameters:
       build-result: resources
       requires:
-        - artifacts:
+        - name: HTML5Module
+          artifacts:
             - HTML5Module-content.zip
-          name: HTML5Module
           target-path: resources/
+
   - name: HTML5Module
     type: html5
     path: HTML5Module
     build-parameters:
       builder: custom
       commands:
+        - npm install
         - npm run build
+      build-result: dist
       supported-platforms: []
+
 resources:
   - name: sample-basic-html5-destination-service
     type: org.cloudfoundry.managed-service
@@ -65,18 +70,20 @@ resources:
       config:
         HTML5Runtime_enabled: true
         version: 1.0.0
+
   - name: sample-basic-html5-repo-host
     type: org.cloudfoundry.managed-service
     parameters:
       service: html5-apps-repo
       service-plan: app-host
-      service-keys: 
+      service-keys:
         - name: sample-basic-html5-repo-host-key
+
   - name: sample-basic-html5-uaa
     type: org.cloudfoundry.managed-service
     parameters:
       path: ./xs-security.json
       service: xsuaa
       service-plan: application
-      service-keys: 
+      service-keys:
         - name: sample-basic-html5-uaa-key

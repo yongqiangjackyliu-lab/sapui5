@@ -5,7 +5,7 @@
         "type": "application",
         "title": "Basic HTML5 App",
         "applicationVersion": {
-            "version": "0.0.1"
+            "version": "1.0.3"
         },
         "sourceTemplate": {
             "id": "@sap/ux-app-migrator:freestyle",

@@ -1,15 +1,15 @@
 {
   "name": "sample.basic.html5.mta",
-  "version": "0.0.1",
+  "version": "1.0.3",
   "scripts": {
-    "zip": "npx bestzip HTML5Module-content.zip *",
+    "zip": "cd dist && npx bestzip HTML5Module-content.zip *",
     "clean": "npx rimraf HTML5Module-content.zip dist",
     "build_old": "npm run clean && npm run zip",
     "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#app-tile\"",
     "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#app-tile\"",
     "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
     "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
-    "build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo",
+    "build": "ui5 build -a --clean-dest --include-task=generateCachebusterInfo && npm run zip",
     "deploy": "fiori verify",
     "deploy-config": "fiori add deploy-config"
   },

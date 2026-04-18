@@ -1,6 +1,6 @@
 _schema-version: "3.2"
 ID: sample-basic-html5-mta
-version: 1.0.0
+version: 1.0.3
 
 build-parameters:
   before-all:
